@@ -1,0 +1,14 @@
+.loadBtn {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  background-color: rgb(184, 253, 166);
+}
+
+.loadBtn:hover {
+  background-color: #feb88c;
+  color: #ffff;
+}
