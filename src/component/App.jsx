@@ -1,13 +1,13 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-import { fetchImages } from "../helpers/fetch";
-import { SearchBar } from "./SearchBar/SearchBar";
-import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
-import { Loader } from "./Loader/Loader";
-import { LoadMoreBtn } from "./LoadMoreBtn/LoadMoreBtn";
-import { ImageGallery } from "./ImageGallery/ImageGallery";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { fetchImages } from "../helpers/fetch";
+import "./App.css";
+import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
+import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { ImageModal } from "./ImageModal/ImageModal";
+import { LoadMoreBtn } from "./LoadMoreBtn/LoadMoreBtn";
+import { Loader } from "./Loader/Loader";
+import { SearchBar } from "./SearchBar/SearchBar";
 
 export function App() {
   const [query, setQuery] = useState("");
@@ -71,7 +71,7 @@ export function App() {
     setIsOpen(false);
   };
 
-  const onClickModal = () => {
+  const onClickModal = (id) => {
     setSelectedImage(images.find((item) => item.id === id));
     openModal();
   };
