@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import { fetchImages } from "../helpers/fetch";
 import "./App.css";
-import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
-import { ImageGallery } from "./ImageGallery/ImageGallery";
-import { ImageModal } from "./ImageModal/ImageModal";
-import { LoadMoreBtn } from "./LoadMoreBtn/LoadMoreBtn";
-import { Loader } from "./Loader/Loader";
+import { useState, useEffect } from "react";
+import { fetchImages } from "../helpers/fetch";
 import { SearchBar } from "./SearchBar/SearchBar";
+import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
+import { Loader } from "./Loader/Loader";
+import { LoadMoreBtn } from "./LoadMoreBtn/LoadMoreBtn";
+import { ImageGallery } from "./ImageGallery/ImageGallery";
+import toast, { Toaster } from "react-hot-toast";
+import { ImageModal } from "./ImageModal/ImageModal";
 
 export function App() {
   const [query, setQuery] = useState("");
