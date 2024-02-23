@@ -62,8 +62,7 @@ export function App() {
   const showLoadMoreBtn =
     images.length > 0 && !loading && currentPage < totalPages;
 
-  const openModal = (item) => {
-    setSelectedImage(item);
+  const openModal = () => {
     setIsOpen(true);
   };
 
@@ -72,10 +71,10 @@ export function App() {
     setIsOpen(false);
   };
 
-  // const onClickModal = (item) => {
-  //   setSelectedImage(images.find((item) => item.id === id));
-  //   openModal();
-  // };
+  const onClickModal = () => {
+    setSelectedImage(images.find((item) => item.id === id));
+    openModal();
+  };
 
   return (
     <>
