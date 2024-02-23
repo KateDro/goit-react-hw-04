@@ -7,6 +7,7 @@ import { Loader } from "./Loader/Loader";
 import { LoadMoreBtn } from "./LoadMoreBtn/LoadMoreBtn";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
 import toast, { Toaster } from "react-hot-toast";
+import { ImageModal } from "./ImageModal/ImageModal";
 
 export function App() {
   const [query, setQuery] = useState("");
@@ -15,6 +16,9 @@ export function App() {
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const searchImages = async (newQuery) => {
     setQuery(newQuery);
@@ -58,14 +62,38 @@ export function App() {
   const showLoadMoreBtn =
     images.length > 0 && !loading && currentPage < totalPages;
 
+  const openModal = (item) => {
+    setSelectedImage(item);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    setIsOpen(false);
+  };
+
+  // const onClickModal = (item) => {
+  //   setSelectedImage(images.find((item) => item.id === id));
+  //   openModal();
+  // };
+
   return (
     <>
       <SearchBar onSearch={searchImages} />
       {loading && <Loader />}
       {error && <ErrorMessage />}
-      {images.length > 0 && <ImageGallery items={images} />}
+      {images.length > 0 && (
+        <ImageGallery items={images} onClickModal={onClickModal} />
+      )}
       {showLoadMoreBtn && <LoadMoreBtn onClick={loadMore} />}
       <Toaster />
+      {selectedImage && (
+        <ImageModal
+          isOpen={isOpen}
+          image={selectedImage}
+          onCloseModal={closeModal}
+        />
+      )}
     </>
   );
 }
